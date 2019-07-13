@@ -9,22 +9,17 @@ console.log(__filename);
 
 const app = express()
 const publicDirectoryPath = path.join(__dirname, '../public')
+
+
+app.set('view engine', 'hbs')
+
 app.use(express.static(publicDirectoryPath))
 
-app.get('' , (req, res) => {
-res.send('Hello Express')
-})
-app.get('/help', (req, res) => {
-res.send('<h1>This Is a help page</h1>')
-})
-app.get('/about',(req,res) => {
-    res.send(
-        {
-            name: 'shadab ali',
-            age:18
-        }
-    )
-})
+app.get('', (req, res) => {
+    res.render('index')
+});
+
+
 app.get('/weather', (req, res) => {
     res.send('<h1>This is weather report') 
 })
