@@ -1,17 +1,18 @@
 const path = require('path')
 const express = require('express')
+const hbs = require('hbs')
 
-console.log(__dirname);
-console.log(__filename);
-
-
-
-
+ 
 const app = express()
 
 const publicDirectoryPath = path.join(__dirname, '../public')
-
+const viewsPath = path.join(__dirname, '../template/views');
+const sharingPath = path.join(__dirname, '../template/sharing')
+ 
 app.set('view engine', 'hbs')
+app.set('views', viewsPath) 
+hbs.registerPartial(sharingPath);
+
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
