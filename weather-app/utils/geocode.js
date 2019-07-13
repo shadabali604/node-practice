@@ -6,7 +6,7 @@ const geocode = (address, callback) => {
     
     request({url: url, json:true}, (error, response) => {
         if(error){
-            callback('unable to connect to loaction', undefined)
+            callback('unable to connect to loction', undefined)
         }
         else if(response.body.features.length === 0){
             callback('Unable to find location, Try another search', undefined)

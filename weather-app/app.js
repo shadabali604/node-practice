@@ -1,6 +1,6 @@
 const request = require('request');
-const geocode = require('./utils/geocode')
-//const url = "https://api.darksky.net/forecast/2d6d10942d735841437adde9f9df433c/37.8267,-122.4233";
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/forecast');
 
 ////
 
@@ -29,7 +29,7 @@ const geocode = require('./utils/geocode')
       //else if(response.body.error){
       // console.log("unable to Find Location")
     //}
-     // else{
+     // else{`
      // const data = JSON.parse(response.body)
    //const data = response.body.currently
    //console.log(response.body.currently);
@@ -40,5 +40,9 @@ const geocode = require('./utils/geocode')
     console.log('Error', error)
     console.log('Data', data);
 
+})
+forecast(-75.7088, 44.1545, (error, data) =>{
+  console.log('Error',error)
+  console.log('Data', data)
 })
 
