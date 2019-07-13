@@ -8,16 +8,24 @@ console.log(__filename);
 
 
 const app = express()
+
 const publicDirectoryPath = path.join(__dirname, '../public')
 
-
 app.set('view engine', 'hbs')
-
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req, res) => {
-    res.render('index')
+    res.render('index', {
+        title: 'Weather App',
+        name:'Shadab Ali'
+    })
 });
+app.get('/about',(req, res) => {
+    res.render('about')
+})
+app.get('/help', (req, res) => {
+    res.render('help')
+})
 
 
 app.get('/weather', (req, res) => {
