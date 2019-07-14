@@ -7,11 +7,11 @@ const app = express()
 
 const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../template/views');
-const sharingPath = path.join(__dirname, '../template/sharing')
+const partialsPath = path.join(__dirname, '../template/partials')
  
 app.set('view engine', 'hbs')
 app.set('views', viewsPath) 
-hbs.registerPartial(sharingPath);
+hbs.registerPartials(partialsPath);
 
 app.use(express.static(publicDirectoryPath))
 
@@ -32,7 +32,23 @@ app.get('/help', (req, res) => {
 app.get('/weather', (req, res) => {
     res.send('<h1>This is weather report') 
 })
+app.get('/help/*', (req, res) => {
+    res.render('404',  {
+        titile: '404',
+        name: 'Shadab Ali',
+        errorMessage: '404 page not found'
 
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('404',  {
+        titile: '404',
+        name: 'Shadab Ali',
+        errorMessage: 'help artice not found'
+
+    })
+})
 
 //app.com
 //app.com/help
