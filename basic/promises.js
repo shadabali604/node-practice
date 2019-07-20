@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 require('../task-manager/src/db/mongoose')
 
 const User = require('../task-manager/src/modals/user')
@@ -21,3 +22,13 @@ const UpdateAgeAndCount = async (id, age) => {
     }).catch((e) => {
         console.log(e)
     })
+=======
+const Work = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve([8, 5, 6])
+    }, 2000)
+})
+Work.then((result) => {
+    console.log('success', result)
+})
+>>>>>>> dc312572f7b50c9a71954b0dac342148a7fc83c1
