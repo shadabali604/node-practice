@@ -27,3 +27,14 @@ setTimeout(() => {
  sum(5,4, (add) => {
      console.log(add);
  });
+
+ 
+ 
+ 
+ 
+ const doWrokCallback = () => {
+
+ }
+ doWrokCallback((error, result)  => {
+      c
+ })
