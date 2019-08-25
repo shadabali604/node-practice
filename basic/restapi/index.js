@@ -43,12 +43,8 @@ app.post('/api/person', (req, res) => {
 
 
 app.put('/api/person/:id',(req, res) => {
-
-    const schema = Joi.object().keys({
-        name: Joi.string().alphanum().min(3).max(30).required() });
-    
-        const result = Joi.validate(req.body, schema);
-
+const person = ValidaterName(req.body);
+  
    const person = persons.find(c => c.id === parseInt(req.param.id));
     if(!person){
         req.status(404).send('Recod not found')
@@ -57,6 +53,13 @@ app.put('/api/person/:id',(req, res) => {
      req.send(person);
 });
 
+
+function ValidaterName(name){
+    const scheme = Joi.object().keys({
+        name: Joi.string().alphanum.min(3).max(30).require() });
+    
+};
+return Joi.validate(name);
 app.listen(3000, () => {
     console.log('Working Good')
 })
