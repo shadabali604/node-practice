@@ -1,4 +1,4 @@
-import express, { json } from 'express';
+ const express = require('express');
 const app = express();
 
 app.use(json());
