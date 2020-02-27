@@ -44,5 +44,5 @@ app.put('/api/courses/:id', (req, res) => {
 const port = process.env.PORT || 3000;
 
 app.listen(port, ()=> {
-    console.log(`Listensing on Port $...`)
+    console.log(`Listening on Port $...`)
 });

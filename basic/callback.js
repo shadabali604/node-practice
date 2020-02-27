@@ -6,10 +6,10 @@ const shortNames = names.filter((name) => {
     return name.length <= 4;
 });
 
-const geocode = (address, calback) => {
+const geocode = (address, callback) => {
     setTimeout(() => {
         const data = {
-            latititude:0,
+            latitude:0,
             longitude:0
         }
         
@@ -32,9 +32,9 @@ setTimeout(() => {
  
  
  
- const doWrokCallback = () => {
+ const doWorkCallback = () => {
 
  }
- doWrokCallback((error, result)  => {
+ doWorkCallback((error, result)  => {
       c
  })
