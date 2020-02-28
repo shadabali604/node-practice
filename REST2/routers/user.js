@@ -35,7 +35,8 @@ router.get('/users/:id', async (req, res) => {
 router.post('/user',async (req, res) => {
 const user = new User({
     name:req.body.name,
-    last:req.body.last
+    email:req.body.email,
+    password:req.body.password
 });
 try{
     await user.save();
