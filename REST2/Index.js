@@ -1,6 +1,7 @@
 const express = require('express');
 const userRouter = require('./routers/user');
 require('./db/mongoose');
+const taskRouter = require('./routers/task');
 
 const app = express();
 
@@ -8,6 +9,7 @@ const app = express();
 app.use(express.json())
 
 app.use(userRouter);
+app.use(taskRouter);
 
 
 

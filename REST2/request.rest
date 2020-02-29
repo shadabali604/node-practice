@@ -4,8 +4,22 @@ content-type: application/json
 {
     "name": "Shadabali",
     "email": "shadabdjjddkdkdkd@gmail.com",
-    "password":"mahiralisjjsjsjs"
+    "password":"This is shadab ali"
 }
 
 ###
 GET http://localhost:3000/users
+
+
+###
+DELETE http://localhost:3000/users/5e58813c6d42c4311442dfe7
+
+
+### 
+POST http://localhost:3000/task HTTP/1.1
+content-type: application/json
+
+{
+    "description":"Shadab ali",
+    "completed": "false"
+}
