@@ -60,6 +60,18 @@ catch(e) {
     res.status(400).send(e)
 }
 });
+//login into user account
 
+
+router.post('/users/login', (req, res) => {
+    try{
+   const user = User.findByCredentials(req.body.email, req.body.password);
+   res.send(user)
+
+}
+    catch(e){
+        res.status(401).send(e)
+    }
+})
 
 module.exports = router;
