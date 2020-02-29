@@ -3,8 +3,8 @@ content-type: application/json
 
 {
     "name": "shadab ali",
-    "email": "shadabali604@gmail.com",
-    "password":"Shadabali"
+    "email": "shadabali@gmail.com",
+    "password":"mahirali"
 }
 
 ###
@@ -34,7 +34,6 @@ GET http://localhost:3000/tasks/5e59cbfe0972a20d6459940b
 Post http://localhost:5000/users/login
 
 {
-    "email":"shadabali604@gmail.com",
+    "email": "shadabali604@gmail.com",
     "password":"Shadabali"
-
 }

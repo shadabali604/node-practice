@@ -5,13 +5,13 @@ const userSchema = new mongoose.Schema({
     name:{
         type:String,
         minlength: 6,
-        required:true,
-       
+        
     },
     email:{
      type:String,
      minlength:12,
      unique:true,
+     required:true,
 
      validate(value) {
         if(!validator.isEmail(value)){
@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type:String,
-        minlength:8,
+        minlength:6,
         required:true,
         lowercase:true
         
@@ -38,8 +38,10 @@ if(user.isModified('password')){
 next()
 
 });
-userSchema.static.userByCredentials = async (password, email) => {
-const user = await User.findOne({email})
+
+
+userSchema.static.findByCredentials = async (password, email) => {
+const user = await User.findOne({email:email})
 if(!user){
     throw new Error('User Not Found')
 }
@@ -47,7 +49,8 @@ const isMatch = await bcrypt.compare(password, user.password)
 if(!isMatch){
     throw new Error('Your Password is wrong')
 }
-return user
+
+return user;
 
 }
  
