@@ -2,13 +2,13 @@ const express = require('express')
 const router = new express.Router();
 const Task = require('../models/task');
 //Create new Task
-router.post('/task', (req, res) => {
+router.post('/task', async (req, res) => {
     const task = new Task({
         description:req.body.description,
         completed:req.body.completed
     });
     try{
-        task.save();
+       await task.save();
         res.status(201).send(task);
     }
     catch(e){
@@ -16,10 +16,10 @@ router.post('/task', (req, res) => {
     }
 });
 // Fetch  all task
-router.get('/tasks', (req, res) => {
-    const tasks = User.find();
-
+router.get('/tasks', async (req, res) => {
+ 
     try{
+        const tasks =  await Task.find();
         res.status(201).send(tasks)
     }
     catch(e){
@@ -33,9 +33,9 @@ router.get('/tasks', (req, res) => {
 
 // fetch one task by id
 
-router.get('/tasks/:id', (req, res) => {
+router.get('/tasks/:id', async (req, res) => {
     const _id = req.params.id;
-    const task = Task.findById(_id);
+    const task = await Task.findById(_id);
     try{
         res.status(201).send(task);
     }
@@ -45,9 +45,9 @@ router.get('/tasks/:id', (req, res) => {
 }
 
 })
-router.delete('/tasks/:id', (req, res) => {
+router.delete('/tasks/:id', async (req, res) => {
     const _id = req.params.id;
-    const task = Task.findByIdAndDelete(_id);
+    const task = await Task.findByIdAndDelete(_id);
     try{
         res.status(201).send(task)
     }
