@@ -1,7 +1,7 @@
 const express = require('express')
 const router = new express.Router();
 const Task = require('../models/task');
-
+//Create new Task
 router.post('/task', (req, res) => {
     const task = new Task({
         description:req.body.description,
@@ -15,4 +15,35 @@ router.post('/task', (req, res) => {
         res.status(400).send(e)
     }
 });
+// Fetch  all task
+router.get('/tasks', (req, res) => {
+    const tasks = User.find();
+
+    try{
+        res.status(201).send(tasks)
+    }
+    catch(e){
+        res.status(400).send(e)
+    }
+});
+
+
+
+
+
+// fetch one task by id
+
+router.get('/task', (req, res) => {
+    const _id = req.params.id;
+    const task = Task.findById(_id);
+    try{
+        res.status(201).send(task);
+    }
+    catch(e){
+
+    res.status(400).send(e)
+}
+
+})
+
 module.exports = router;
