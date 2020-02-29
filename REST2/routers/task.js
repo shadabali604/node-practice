@@ -33,7 +33,7 @@ router.get('/tasks', (req, res) => {
 
 // fetch one task by id
 
-router.get('/task', (req, res) => {
+router.get('/tasks/:id', (req, res) => {
     const _id = req.params.id;
     const task = Task.findById(_id);
     try{
@@ -45,5 +45,14 @@ router.get('/task', (req, res) => {
 }
 
 })
-
+router.delete('/tasks/:id', (req, res) => {
+    const _id = req.params.id;
+    const task = Task.findByIdAndDelete(_id);
+    try{
+        res.status(201).send(task)
+    }
+    catch(e){
+        res.status(400).send(e)
+    }
+});
 module.exports = router;
