@@ -39,15 +39,14 @@ next()
  
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({email});
-    if(!user){ 
+    if(!user){
         throw new Error('Email is not found');
     }
     const isMatch = await bcrypt.compare(password, user.password)
 if(!isMatch){
-    throw new Error('Password is not Match ')
+    throw new Error('Password is not Match')
 }
 return user
-
 }
 
 module.exports = mongoose.model('User', userSchema)

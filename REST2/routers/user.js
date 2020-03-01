@@ -46,6 +46,17 @@ catch(e) {
     res.status(400).send(e)
 }
 });
+
+router.post('/user/login', async (req, res) => {
+    try {
+  const user = await User.findByCredentials(req.body.email, req.body.password);
+  res.status(201).send(user);
+
+}
+   catch (e) {
+       res.status(401).send(e);
+   }
+});
 //deleting user from mongo
 router.delete('/users/:id', async (req, res) => {
 const _id = req.params.id;
@@ -63,15 +74,6 @@ catch(e) {
 //login into user account
 
 
-router.post('/users/login', async (req, res) => {
-    try{
-   const user = await User.findByCredentials(req.body.email, req.body.password);
-   res.send(user)
 
-}
-    catch(e){
-        res.status(401).send(e)
-    }
-})
 
 module.exports = router;
