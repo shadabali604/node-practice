@@ -7,7 +7,7 @@ const User = require('../models/user');
 
 router.get('/users',async (req, res) => {
  try{
-    const users = await User.find(); 
+    const users = await User.find({}); 
     res.status(201).send(users);
 } 
  catch(e){
@@ -47,16 +47,17 @@ catch(e) {
 }
 });
 
-router.post('/user/login', async (req, res) => {
+router.post('/users/login', async (req, res) => {
     try {
-  const user = await User.findByCredentials(req.body.email, req.body.password);
-  res.status(201).send(user);
-
-}
-   catch (e) {
-       res.status(401).send(e);
-   }
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = user.generateAuthToken();
+        
+        res.send({user, token});
+    } catch (e) {
+        res.status(400).send(e)
+    }
 });
+
 //deleting user from mongo
 router.delete('/users/:id', async (req, res) => {
 const _id = req.params.id;
