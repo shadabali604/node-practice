@@ -3,6 +3,19 @@ const router = new express.Router;
 const User = require('../models/user');
 
 
+router.post('/users/login', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const token = await user.generateAuthToken();
+        
+        res.send({user, token});
+
+    } catch (e) {
+        res.status(400).send(e)
+    }
+});
+
+
 //fetching all users from mongo
 
 router.get('/users',async (req, res) => {
@@ -47,16 +60,6 @@ catch(e) {
 }
 });
 
-router.post('/users/login', async (req, res) => {
-    try {
-        const user = await User.findByCredentials(req.body.email, req.body.password)
-        const token = user.generateAuthToken();
-        
-        res.send({user, token});
-    } catch (e) {
-        res.status(400).send(e)
-    }
-});
 
 //deleting user from mongo
 router.delete('/users/:id', async (req, res) => {

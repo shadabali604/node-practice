@@ -12,11 +12,11 @@ GET http://localhost:5000/users
 
 
 ###
-DELETE http://localhost:3000/users/5e58813c6d42c4311442dfe7
+DELETE http://localhost:5000/users/5e58813c6d42c4311442dfe7
 
 
 ### 
-POST http://localhost:3000/task HTTP/1.1
+POST http://localhost:5000/task HTTP/1.1
 content-type: application/json
 
 {
@@ -24,16 +24,17 @@ content-type: application/json
     "completed": "false"
 }
 ###
-GET http://localhost:3000/tasks
+GET http://localhost:5000/tasks
 
 ###
 GET http://localhost:3000/tasks/5e59cbfe0972a20d6459940b
 
 
 ###
+
 Post http://localhost:5000/users/login
 
 {
-    "email": "shadabali604@gmail.com",
-    "password":"Shadabali"
+    "email": "shadabali@gmail.com",
+    "password":"mahirali"
 }

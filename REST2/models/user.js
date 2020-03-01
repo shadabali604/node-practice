@@ -42,14 +42,15 @@ userSchema.statics.findByCredentials = async (email, password) => {
         throw new Error('Unable to login')
     }
 
-    const isMatch = await bcrypt.compare(password, user.password)
+    const isMatched = await bcrypt.compare(password, user.password)
 
-    if (!isMatch) {
+    if (!isMatched) {
         throw new Error('Unable to login')
     }
 
     return user
 }
+
 userSchema.pre('save', async function (next)  {
 console.log('Before save')
 const user = this
